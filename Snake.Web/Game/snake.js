@@ -34,20 +34,26 @@ var Snake = function () {
     };
 
     this.changeDirection = function (newDirection) {
-        if (direction == Direction.RIGHT && newDirection == Direction.LEFT) return;
-        if (direction == Direction.LEFT && newDirection == Direction.RIGHT) return;
-        if (direction == Direction.UP && newDirection == Direction.DOWN) return;
-        if (direction == Direction.DOWN && newDirection == Direction.UP) return;
+
+        if (sections.length > 1) {
+            var nextPosition = this.getNextPosition(newDirection);
+            if (nextPosition.equals(sections[1].getPosition()))
+                return false;
+        }
+        
         direction = newDirection;
+        return true;
     };
 
-    this.getNextPosition = function () {
+    this.getNextPosition = function (suppliedDirection) {
         var position = this.getHead().getPosition();
 
-        if (direction == Direction.RIGHT) position = new Coordinate(position.x + 1, position.y);
-        else if (direction == Direction.LEFT) position = new Coordinate(position.x - 1, position.y);
-        else if (direction == Direction.UP) position = new Coordinate(position.x, position.y + 1);
-        else if (direction == Direction.DOWN) position = new Coordinate(position.x, position.y - 1);
+        suppliedDirection = suppliedDirection || direction;
+
+        if      (suppliedDirection == Direction.RIGHT) position = new Coordinate(position.x + 1, position.y);
+        else if (suppliedDirection == Direction.LEFT)  position = new Coordinate(position.x - 1, position.y);
+        else if (suppliedDirection == Direction.UP)    position = new Coordinate(position.x, position.y + 1);
+        else if (suppliedDirection == Direction.DOWN)  position = new Coordinate(position.x, position.y - 1);
 
         return position;
     };

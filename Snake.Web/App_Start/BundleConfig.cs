@@ -15,6 +15,10 @@ namespace Snake.Web
             bundles.Add(new StyleBundle("~/Content/snake").Include(
                 "~/Game/*.css"
             ));
+
+            bundles.Add(new ScriptBundle("~/bundles/test").Include(
+                "~/Tests/*.js"
+            ));
         }
     }
 }

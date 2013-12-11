@@ -16,5 +16,9 @@ namespace Snake.Web.Controllers
             return View();
         }
 
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }
