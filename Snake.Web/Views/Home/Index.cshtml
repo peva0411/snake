@@ -2,9 +2,13 @@
     ViewBag.Title = "Snake";
 }
 
+@section Css {
+    @Styles.Render("~/Content/snake")
+    
+}
+
 @section Scripts {
-    <link rel="stylesheet" type="text/css" href="~/game.css" />
-    <script type="text/javascript" src="~/game.js"></script>
+    @Scripts.Render("~/bundles/snake")
 }
 
 <div id="game-board"></div>
