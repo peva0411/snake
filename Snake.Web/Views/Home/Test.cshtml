@@ -2,9 +2,16 @@
     ViewBag.Title = "Test";
 }
 
+@section Css {
+    <link href="~/Tests/qunit.css" rel="stylesheet" />
+}
+
 @section Scripts {
     @Scripts.Render("~/bundles/snake")
-    @Scripts.Render("~/bundles/test")
 }
 
 
+@Scripts.Render("~/bundles/test")
+
+<div id="qunit">
+</div>

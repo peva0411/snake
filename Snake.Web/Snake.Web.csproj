@@ -138,6 +138,7 @@
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Tests\qunit.css" />
     <Content Include="Game\coordinate.js" />
     <Content Include="Game\direction.js" />
     <Content Include="Game\food.js" />
@@ -155,7 +156,8 @@
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
-    <Content Include="Tests\Snake.js" />
+    <Content Include="Tests\qunit.js" />
+    <Content Include="Tests\SnakeTests.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

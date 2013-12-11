@@ -8,6 +8,10 @@ namespace Snake.Web
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/universal").Include(
+                "~/Scripts/jquery-2.0.3.js",
+                "~/Scripts/bootstrap.js"
+            ));
             bundles.Add(new ScriptBundle("~/bundles/snake").Include(
                 "~/Game/*.js"   
             ));
