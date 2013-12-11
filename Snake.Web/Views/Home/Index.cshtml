@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Snake";
+}
+
+@section Scripts {
+    <link rel="stylesheet" type="text/css" href="~/game.css" />
+    <script type="text/javascript" src="~/game.js"></script>
+}
+
+<div id="game-board"></div>
+<div id="controls">
+    <div class="control">
+        <div class="description">Pause / Unpause:</div>
+        <div class="hotkey">ESC</div>
+    </div>
+    <div class="control">
+        <div class="description">Move Left:</div>
+        <div class="hotkey">&larr;</div>
+    </div>
+    <div class="control">
+        <div class="description">Move Right:</div>
+        <div class="hotkey">&rarr;</div>
+    </div>
+    <div class="control">
+        <div class="description">Move Up:</div>
+        <div class="hotkey">&uarr;</div>
+    </div>
+    <div class="control">
+        <div class="description">Move Down:</div>
+        <div class="hotkey">&darr;</div>
+    </div>
+</div>
+
+@section JavaScript {
+    <script type="text/javascript">
+        var game = new Game(10, 10);
+        game.start();
+    </script>   
+}
