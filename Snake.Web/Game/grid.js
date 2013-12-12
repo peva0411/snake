@@ -3,6 +3,29 @@ var Grid = function (gameBoard, height, width) {
     var grid = [],
         cells = [];
 
+    this.isSnakeInCell = function(position) {
+        var objects = this.getObjectsInCell(position);
+        for (var i = 0; i < objects.length; i++) {
+            if (objects[i] instanceof SnakeSection) return true;
+        }
+        
+        return false;
+    };
+
+    this.getEmptyCells = function() {
+        var result = [];
+        for (var y = 0; y < width; y++) {
+            for (var x = 0; x < height; x++) {
+                var coordinate = new Coordinate(x, y);
+                if (!this.isSnakeInCell(coordinate))
+                    result.push(coordinate);
+                else console.log(coordinate);
+            }
+        }
+
+        return result;
+    };
+
     this.getObjectsInCell = function (position) {
         if (!this.isValidPosition(position)) return [];
         return grid[position.x][position.y];
@@ -26,6 +49,8 @@ var Grid = function (gameBoard, height, width) {
     };
 
     this.clear = function () {
+        grid = [];
+        
         for (var x = 0; x < width; x++) {
             var row = [];
             for (var y = 0; y < height; y++) {

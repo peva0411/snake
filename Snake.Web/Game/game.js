@@ -79,7 +79,10 @@ var Game = function (height, width) {
     };
 
     game.createFood = function () {
-        food = new Food(height, width);
+        var cells = grid.getEmptyCells();
+        var index = parseInt(Math.random() * cells.length);
+        
+        food = new Food(cells[index]);
         grid.add(food.getPosition(), food);
     };
 
