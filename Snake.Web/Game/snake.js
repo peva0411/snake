@@ -37,7 +37,8 @@ var Snake = function () {
 
         if (sections.length > 1) {
             var nextPosition = this.getNextPosition(newDirection);
-            if (nextPosition.equals(sections[1].getPosition()))
+            var nextSectionPosition = sections[1].getPosition();
+            if (nextPosition.equals(nextSectionPosition))
                 return false;
         }
         

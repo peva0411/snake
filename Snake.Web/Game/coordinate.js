@@ -7,4 +7,8 @@ var Coordinate = function (x, y) {
         if (that == null) return false;
         return this.x === that.x && this.y === that.y;
     };
+
+    this.toString = function() {
+        return '(' + this.x + ', ' + this.y + ')';
+    };
 };

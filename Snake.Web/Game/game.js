@@ -13,17 +13,15 @@ var Game = function (height, width) {
         snake = new Snake(),
         food = null;
 
-    game.processInput = function () {
-        var ev = event;
-
-        var keyCommands = {
-            /* ESC   */ 27: function () { running ? game.pause() : game.unpause(); },
-            /* LEFT  */ 37: function () { snake.changeDirection(Direction.LEFT); },
-            /* UP    */ 38: function () { snake.changeDirection(Direction.UP); },
-            /* RIGHT */ 39: function () { snake.changeDirection(Direction.RIGHT); },
-            /* DOWN  */ 40: function () { snake.changeDirection(Direction.DOWN); },
-        };
-
+    var keyCommands = {
+        /* ESC   */ 27: function () { running ? game.pause() : game.unpause(); },
+        /* LEFT  */ 37: function () { snake.changeDirection(Direction.LEFT); },
+        /* UP    */ 38: function () { snake.changeDirection(Direction.UP); },
+        /* RIGHT */ 39: function () { snake.changeDirection(Direction.RIGHT); },
+        /* DOWN  */ 40: function () { snake.changeDirection(Direction.DOWN); },
+    };
+    
+    game.readInput = function (ev) {
         var command = keyCommands[ev.which];
         if (command) command();
     };
@@ -34,7 +32,6 @@ var Game = function (height, width) {
     };
 
     game.loop = function () {
-
         //update loop
         var foodPosition = food ? food.getPosition() : null,
             newPosition = snake.getNextPosition();
@@ -55,15 +52,11 @@ var Game = function (height, width) {
     };
 
     game.draw = function () {
-        var foodPosition = food ? food.getPosition() : null;
-
         grid.clear();
 
-        if (foodPosition)
-            grid.add(foodPosition, food);
+        if (food) grid.add(food.getPosition(), food);
 
         var snakeSections = snake.getSnakeSections();
-
         for (var i = 0; i < snakeSections.length; i++) {
             var snakeSection = snakeSections[i];
             grid.add(snakeSection.getPosition(), snakeSection);
@@ -97,7 +90,7 @@ var Game = function (height, width) {
     };
 
     game.start = function () {
-        addEventListener('keyup', game.processInput);
+        $("body").keyup(game.readInput);
         game.createFood();
         game.unpause();
     };
@@ -105,6 +98,7 @@ var Game = function (height, width) {
     game.end = function () {
         console.log('game ended');
         clearInterval(intervalId);
+        $("body").unbind("keyup", game.readInput);
         alert('game over');
     };
 
