@@ -19,7 +19,6 @@ var Grid = function (gameBoard, height, width) {
                 var coordinate = new Coordinate(x, y);
                 if (!this.isSnakeInCell(coordinate))
                     result.push(coordinate);
-                else console.log(coordinate);
             }
         }
 
