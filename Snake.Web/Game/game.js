@@ -99,7 +99,7 @@ var Game = function (height, width) {
     };
 
     game.end = function () {
-        console.log('game ended');
+        console.log('game ended', $("body").data());
         clearInterval(intervalId);
         $("body").unbind("keyup", game.readInput);
         alert('game over');
