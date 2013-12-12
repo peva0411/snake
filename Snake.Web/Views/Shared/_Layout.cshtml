@@ -10,6 +10,8 @@
         <meta name="viewport" content="width=device-width" />
         <title>@ViewBag.Title</title>
         @RenderSection("Head", false)
+
+        @Styles.Render("~/Content/universal")
         @RenderSection("Css", false)
     
         @Scripts.Render("~/bundles/universal")

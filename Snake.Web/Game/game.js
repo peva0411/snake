@@ -6,9 +6,10 @@
 */
 var Game = function (height, width) {
     var game = this,
+        gameBoard = $("#game-board"),
         running = false,
         intervalId = null,
-        grid = new Grid(height, width),
+        grid = new Grid(gameBoard, height, width),
         snake = new Snake(),
         food = null;
 

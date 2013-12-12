@@ -1,7 +1,7 @@
 ﻿// Grid - class responsible for holding each game object
-var Grid = function (height, width) {
+var Grid = function (gameBoard, height, width) {
     var grid = [],
-        cells = document.querySelectorAll('.cell');
+        cells = [];
 
     this.getObjectsInCell = function (position) {
         if (!this.isValidPosition(position)) return [];
@@ -38,25 +38,19 @@ var Grid = function (height, width) {
     };
 
     this.init = function () {
-        var gameBoard = document.getElementById('game-board');
-
         for (var y = 0; y < width; y++) {
-            var row = document.createElement('div');
-            row.className = 'row';
 
-            gameBoard.appendChild(row);
+            var row = $("<div>").addClass("game-row");
+            gameBoard.append(row);
+
             for (var x = 0; x < height; x++) {
-                var cell = document.createElement('div');
-                cell.className = 'cell';
-                row.appendChild(cell);
+                row.append($("<div>").addClass("cell"));
             }
-
-            var clearFix = document.createElement('div');
-            clearFix.style.clear = "both";
-            gameBoard.appendChild(clearFix);
+            
+            gameBoard.addClass("clearfix");
         }
 
-        cells = document.querySelectorAll('.cell');
+        cells = $('.cell');
         this.clear();
     };
 
