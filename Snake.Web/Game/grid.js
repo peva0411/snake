@@ -14,8 +14,8 @@ var Grid = function (gameBoard, height, width) {
 
     this.getEmptyCells = function() {
         var result = [];
-        for (var y = 0; y < width; y++) {
-            for (var x = 0; x < height; x++) {
+        for (var y = 0; y < height; y++) {
+            for (var x = 0; x < width; x++) {
                 var coordinate = new Coordinate(x, y);
                 if (!this.isSnakeInCell(coordinate))
                     result.push(coordinate);
@@ -62,12 +62,13 @@ var Grid = function (gameBoard, height, width) {
     };
 
     this.init = function () {
-        for (var y = 0; y < width; y++) {
+
+        for (var y = 0; y < height; y++) {
 
             var row = $("<div>").addClass("game-row");
             gameBoard.append(row);
 
-            for (var x = 0; x < height; x++) {
+            for (var x = 0; x < width; x++) {
                 row.append($("<div>").addClass("cell"));
             }
             

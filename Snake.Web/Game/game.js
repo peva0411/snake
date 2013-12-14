@@ -7,6 +7,7 @@
 var Game = function (height, width) {
     var game = this,
         gameBoard = $("#game-board"),
+        pointTotalElement = $("<div>").addClass('score-board').css({ position: "absolute", top: "1px", left: "4px" }).appendTo(gameBoard),
         running = false,
         intervalId = null,
         grid = new Grid(gameBoard, height, width),
@@ -61,6 +62,8 @@ var Game = function (height, width) {
             var snakeSection = snakeSections[i];
             grid.add(snakeSection.getPosition(), snakeSection);
         }
+
+        pointTotalElement.text(snakeSections.length);
     };
 
     game.checkEndingConditions = function () {
